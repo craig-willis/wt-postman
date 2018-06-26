@@ -1,0 +1,190 @@
+{
+	"info": {
+		"name": "Whole Tale",
+		"_postman_id": "2a11f786-2e31-3452-0bef-190158daf3b2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"HTTP response\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Get token\", function () {",
+							"    pm.response.to.be.json",
+							"    pm.environment.set(\"token\", jsonData.authToken.token);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"api_key",
+						"token"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}",
+							"equals": true
+						}
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Post instance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"HTTP response\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Get token\", function () {",
+							"    pm.response.to.be.json",
+							"    pm.environment.set(\"token\", jsonData.authToken.token);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"api_key",
+						"token"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}",
+							"equals": true
+						}
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete instance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"HTTP response\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Get token\", function () {",
+							"    pm.response.to.be.json",
+							"    pm.environment.set(\"token\", jsonData.authToken.token);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"api_key",
+						"token"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{api_key}}",
+							"equals": true
+						}
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		}
+	]
+}
