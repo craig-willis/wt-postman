@@ -1,6 +1,6 @@
 # WholeTale integration testing with Postman/Newman
 
-Demonstration of [Postman](https://www.getpostman.com/) for API integration testing. This directory contains a Postman collection and environment intended for executing API tests against a running instance of Whole Tale.  Postman can be used interactively or [Newman](https://www.getpostman.com/docs/postman/collection_runs/command_line_integration_with_newman) for command line execution
+Demonstration of [Postman](https://www.getpostman.com/) for API integration testing. This directory contains a Postman collection and environment intended for executing API tests against a running instance of Whole Tale.  Postman can be used interactively or [Newman](https://www.getpostman.com/docs/postman/collection_runs/command_line_integration_with_newman) for command line execution.
 
 ## Using Postman
 
@@ -11,7 +11,7 @@ Download free [Postman application](https://www.getpostman.com/) for your OS.
 In Postman, select "Import" and browse to this directory. Select ``wholetale.postman_collection.json``. You should now see a collection called "wholetale".
 
 ### Import the environment
-Select the settings cog next to the environments drop-down then "Manage Environments". Select the "Import" button and browse to this directory. Import "wholetale.postman_environment.json".  You can edit the environment as needed.
+Select the settings cog next to the environments drop-down then "Manage Environments". Select the "Import" button and browse to this directory. Import `wholetale.postman_environment.json`.  You'll need to edit the environment to set the target host and API key for testing.
 
 ### Export the collection
 In Postman, select the wholetale collection then select the "Download Collection" link. Select v2.1 format and save the collection to this directory.
