@@ -1,6 +1,6 @@
 # WholeTale integration testing with Postman/Newman
 
-Demonstration of [Postman](https://www.getpostman.com/) for API integration testing. This directory contains a Postman collection and environment intended for executing API tests against a running instance of Whole Tale.  Postman can be used interactively or [Newman](https://www.getpostman.com/docs/postman/collection_runs/command_line_integration_with_newman) for command line execution
+Demonstration of [Postman](https://www.getpostman.com/) for API integration testing. This directory contains a Postman collection and environment intended for executing API tests against a running instance of Whole Tale.  Postman can be used interactively or [Newman](https://www.getpostman.com/docs/postman/collection_runs/command_line_integration_with_newman) for command line execution.
 
 ## Using Postman
 
