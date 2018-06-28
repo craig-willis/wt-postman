@@ -1,190 +1,729 @@
 {
 	"info": {
-		"name": "Whole Tale",
 		"_postman_id": "2a11f786-2e31-3452-0bef-190158daf3b2",
-		"description": "",
+		"name": "wholetale",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get Token",
-			"event": [
+			"name": "Tale",
+			"description": "",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"HTTP response\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"var jsonData = pm.response.json();",
-							"",
-							"pm.test(\"Get token\", function () {",
-							"    pm.response.to.be.json",
-							"    pm.environment.set(\"token\", jsonData.authToken.token);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
-					"protocol": "https",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"api_key",
-						"token"
-					],
-					"query": [
+					"name": "Get Token",
+					"event": [
 						{
-							"key": "key",
-							"value": "{{api_key}}",
-							"equals": true
+							"listen": "test",
+							"script": {
+								"id": "0ede6928-5120-411c-bf91-58f4c7e1a2af",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Get token\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"token\", jsonData.authToken.token);",
+									"    pm.environment.set(\"userId\", jsonData.user._id);",
+									"});"
+								]
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"api_key",
+								"token"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api_key}}"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
 				},
-				"description": "\t"
-			},
-			"response": []
-		},
-		{
-			"name": "Post instance",
-			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"HTTP response\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"var jsonData = pm.response.json();",
-							"",
-							"pm.test(\"Get token\", function () {",
-							"    pm.response.to.be.json",
-							"    pm.environment.set(\"token\", jsonData.authToken.token);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
-					"protocol": "https",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"api_key",
-						"token"
-					],
-					"query": [
+					"name": "List Tales",
+					"event": [
 						{
-							"key": "key",
-							"value": "{{api_key}}",
-							"equals": true
+							"listen": "test",
+							"script": {
+								"id": "2db7e595-94e5-463e-90c3-2accf2118ad4",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"JSON response\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.expect(jsonData.length).to.gt(1);",
+									"});"
+								]
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/tale",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tale"
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
 				},
-				"description": "\t"
-			},
-			"response": []
-		},
-		{
-			"name": "Delete instance",
-			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "a1c97b17-e234-427f-96cd-82d8c806ad9c",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"HTTP response\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"var jsonData = pm.response.json();",
-							"",
-							"pm.test(\"Get token\", function () {",
-							"    pm.response.to.be.json",
-							"    pm.environment.set(\"token\", jsonData.authToken.token);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "https://{{host}}/api/v1/api_key/token?key={{api_key}}",
-					"protocol": "https",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"api_key",
-						"token"
-					],
-					"query": [
+					"name": "Get Tale by Text",
+					"event": [
 						{
-							"key": "key",
-							"value": "{{api_key}}",
-							"equals": true
+							"listen": "test",
+							"script": {
+								"id": "e18a6371-c522-4c20-a864-657a21191546",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"JSON response\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.expect(data.length).to.eql(1);",
+									"    pm.expect(data[0].title).to.equal(\"LIGO Tutorial\")",
+									"    pm.environment.set(\"ligoTaleId\", data[0]._id);",
+									"});",
+									""
+								]
+							}
 						}
-					]
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/tale?text=LIGO",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tale"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "LIGO"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
 				},
-				"description": "\t"
-			},
-			"response": []
+				{
+					"name": "Get Tale by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8549f11-bfc9-4793-8200-366b7af8a644",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"JSON response\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.expect(data.title).to.equal(\"LIGO Tutorial\")",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/tale/{{ligoTaleId}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tale",
+								"{{ligoTaleId}}"
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Home Directory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6677bae-adbb-43c2-8d33-bc27617d864d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Get token\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"homeDirId\", data[0]._id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/folder?parentId={{userId}}&parentType=user&name=Home",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"folder"
+							],
+							"query": [
+								{
+									"key": "parentId",
+									"value": "{{userId}}"
+								},
+								{
+									"key": "parentType",
+									"value": "user"
+								},
+								{
+									"key": "name",
+									"value": "Home"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Folder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89850979-24da-426b-879b-0bcb326df81b",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Get token\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"testFolderId\", data._id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/folder?parentId={{homeDirId}}&parentType=folder&name=integration_test",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"folder"
+							],
+							"query": [
+								{
+									"key": "parentId",
+									"value": "{{homeDirId}}"
+								},
+								{
+									"key": "parentType",
+									"value": "folder"
+								},
+								{
+									"key": "name",
+									"value": "integration_test"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b3f2d46-6eb5-47c9-a3fd-9f4c71e0e966",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Get token\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"jupyterImageId\", data[0]._id);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/image?text=Jupyter Notebook",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"image"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "Jupyter Notebook"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Post Tale",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d32df9d-22df-44ec-b31b-729be87d5ec1",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"JSON response\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"testTaleId\", data._id);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Automated Test Tale\",\n  \"folderId\": \"{{testFolderId}}\",\n  \"imageId\": \"{{jupyterImageId}}\",\n  \"public\": false,\n  \"published\": false,\n  \"title\": \"Automated Test Tale\"\n}"
+						},
+						"url": {
+							"raw": "https://{{host}}/api/v1/tale/",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tale",
+								""
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Post instance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "decfcad1-cf4e-4085-ac86-519ef5590a00",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var data = pm.response.json();",
+									"",
+									"pm.test(\"Post instance\", function () {",
+									"    pm.response.to.be.json",
+									"    pm.environment.set(\"instanceId\", data._id);",
+									"    pm.environment.set(\"instanceUrl\", data.url)",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/instance?taleId={{testTaleId}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance"
+							],
+							"query": [
+								{
+									"key": "taleId",
+									"value": "{{testTaleId}}"
+								}
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Instance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebfa4075-944f-4757-93b3-be8d1b67bdc1",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/instance/{{instanceId}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"{{instanceId}}"
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tale",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bff0ed7a-6ac7-49ea-a4fc-e690523d9b9f",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/tale/{{testTaleId}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tale",
+								"{{testTaleId}}"
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Folder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1aaa276-e13a-4bd3-a44d-89e70fffcd5e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"HTTP response\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							},
+							{
+								"key": "Girder-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://{{host}}/api/v1/folder/{{testFolderId}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"folder",
+								"{{testFolderId}}"
+							]
+						},
+						"description": "\t"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
